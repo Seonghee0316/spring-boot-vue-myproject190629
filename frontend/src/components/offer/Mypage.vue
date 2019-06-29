@@ -73,7 +73,9 @@
                 <label class="col-lg-3 col-form-label form-control-label">회사 주소</label>
                 <div class="col-lg-9">
                   <!-- <input class="form-control" type="email" value="email@gmail.com"> -->
-                  <label class="col-form-label form-control-label mypage-value">경기 성남시 분당구 삼평동 681번지 에이치스퀘어 N동</label>
+                  <label
+                    class="col-form-label form-control-label mypage-value"
+                  >경기 성남시 분당구 삼평동 681번지 에이치스퀘어 N동</label>
                 </div>
               </div>
               <div class="form-group row">
@@ -111,8 +113,13 @@
               </div>-->
             </form>
             <div class="mypage-view-btn">
-              <button type="button" class="btn btn-primary">Edit Profile</button>
-              <router-link to="/login"><button type="button" class="btn btn-primary">Logout</button></router-link>
+              <button type="button" class="btn btn-primary">수정</button>
+              <router-link to="/login">
+                <button type="button" class="btn btn-primary">로그아웃</button>
+              </router-link>
+              <router-link to="/login">
+                <button type="button" class="btn btn-primary">탈퇴</button>
+              </router-link>
             </div>
           </form>
         </form>
