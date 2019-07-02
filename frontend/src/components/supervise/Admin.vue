@@ -57,11 +57,12 @@
               <thead>
                 <tr>
                   <th>NO</th>
-                  <th>ID</th>
+                  <th>기업 ID</th>
                   <th>기업명</th>
                   <th>담당자명</th>
-                  <th>연락처</th>
-                  <th>이메일</th>
+                  <th>담당자 연락처</th>
+                  <th>회사 홈페이지</th>
+                  <th>회사 주소</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,6 +73,7 @@
                   <td>dolor</td>
                   <td>02-3533-1830</td>
                   <td>fgeot@gmail.com</td>
+                  <td>fgeot@gmail.com</td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -79,6 +81,7 @@
                   <td>consectetur</td>
                   <td>adipiscing</td>
                   <td>02-3533-1830</td>
+                  <td>gqeot@gmail.com</td>
                   <td>gqeot@gmail.com</td>
                 </tr>
                 <tr>
@@ -88,6 +91,7 @@
                   <td>odio</td>
                   <td>02-3533-1830</td>
                   <td>eidpe@gmail.com</td>
+                  <td>eidpe@gmail.com</td>
                 </tr>
                 <tr>
                   <td>4</td>
@@ -96,6 +100,7 @@
                   <td>Sed</td>
                   <td>02-3533-1830</td>
                   <td>qlpxie@gmail.com</td>
+                  <td>qlpxie@gmail.com</td>
                 </tr>
                 <tr>
                   <td>5</td>
@@ -103,6 +108,7 @@
                   <td>quis</td>
                   <td>sem</td>
                   <td>02-3533-1830</td>
+                  <td>cccse@gmail.com</td>
                   <td>cccse@gmail.com</td>
                 </tr>
               </tbody>
@@ -154,6 +160,7 @@ body {
 }
 .navbar-fixed-top {
   border: 0;
+  background-color: #337ab7;
 }
 .sidebar {
   display: none;
@@ -218,4 +225,15 @@ body {
 .admin-pagination {
   text-align: center;
 }
+
+.navbar-brand{
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color:white;
+  font-weight: bold;
+}
+
 </style>

@@ -3,7 +3,11 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
       <div class="sidebar-header">
-        <h3><a href="#">'유성희' 님</a></h3>
+        <h3>
+          <a href="#">
+            <span>유성희</span> 님
+          </a>
+        </h3>
       </div>
 
       <ul class="list-unstyled components">
@@ -14,7 +18,7 @@
             data-toggle="collapse"
             aria-expanded="false"
             class="dropdown-toggle"
-          >Home</a유성희> -->
+          >Home</a유성희>-->
           <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a href="#">Home 1</a>
@@ -47,7 +51,7 @@
             <li>
               <a href="#">Page 3</a>
             </li>
-          </ul> -->
+          </ul>-->
         </li>
         <li>
           <a href="#">자기PR</a>
@@ -73,8 +77,8 @@
     <!-- Page Content  -->
     <div id="content">
       <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
-        <!-- <h1>My page</h1> -->
-        <!-- <div class="container-fluid">
+      <!-- <h1>My page</h1> -->
+      <!-- <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
@@ -100,7 +104,7 @@
                             </li>
                         </ul>
                     </div>
-        </div>-->
+      </div>-->
       <!-- </nav> -->
 
       <!-- <h2>Collapsible Sidebar Using Bootstrap 4</h2>
@@ -185,21 +189,20 @@
               </div>
                 </div>-->
                 <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">기업 ID</label>
+                  <div class="col-lg-9">
+                    <!-- <input class="form-control" type="text" value="janeuser"> -->
+                    <label class="col-form-label form-control-label mypage-value">KAKAO</label>
+                  </div>
+                </div>
+                <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">대표자</label>
                   <div class="col-lg-9">
                     <!-- <input class="form-control" type="text" value="janeuser"> -->
                     <label class="col-form-label form-control-label mypage-value">여민수/조수용</label>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">회사 주소</label>
-                  <div class="col-lg-9">
-                    <!-- <input class="form-control" type="email" value="email@gmail.com"> -->
-                    <label
-                      class="col-form-label form-control-label mypage-value"
-                    >경기 성남시 분당구 삼평동 681번지 에이치스퀘어 N동</label>
-                  </div>
-                </div>
+
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">담당자 명</label>
                   <div class="col-lg-9">
@@ -212,6 +215,24 @@
                   <div class="col-lg-9">
                     <!-- <input class="form-control" type="text" value placeholder="Street"> -->
                     <label class="col-form-label form-control-label mypage-value">02 3653 1293</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">회사 주소</label>
+                  <div class="col-lg-9">
+                    <!-- <input class="form-control" type="email" value="email@gmail.com"> -->
+                    <label
+                      class="col-form-label form-control-label mypage-value"
+                    >경기 성남시 분당구 삼평동 681번지 에이치스퀘어 N동</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">회사 홈페이지</label>
+                  <div class="col-lg-9">
+                    <!-- <input class="form-control" type="email" value="email@gmail.com"> -->
+                    <label
+                      class="col-form-label form-control-label mypage-value"
+                    >https://www.kakaocorp.com/</label>
                   </div>
                 </div>
                 <!-- <div class="form-group row">
@@ -235,7 +256,9 @@
                 </div>-->
               </form>
               <div class="mypage-view-btn">
+                <router-link to="/mypageEdit">
                 <button type="button" class="btn">수정</button>
+                </router-link>
                 <router-link to="/login">
                   <button type="button" class="btn">로그아웃</button>
                 </router-link>
@@ -260,7 +283,7 @@ export default {};
 .wrapper {
   /* font-family: "Poppins", sans-serif; */
   /* background: #fafafa; */
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   /* font-weight: 300px; */
 }
 
@@ -336,6 +359,9 @@ a:focus {
 
 .sidebar-header h3 {
   font-weight: bold;
+}
+.sidebar-header h3 span {
+  color: #2d699c;
 }
 
 #sidebar ul.components {
@@ -420,7 +446,7 @@ a.article:hover {
 
 #content {
   width: 100%;
-  padding: 50px;
+  padding: 10px;
   min-height: 100vh;
   transition: all 0.3s;
 }
@@ -447,7 +473,6 @@ a.article:hover {
   margin-bottom: 2%;
   border-radius: 0.5rem;
   background: #fff;
-
 }
 
 .emp-profile .row {
@@ -478,12 +503,12 @@ a.article:hover {
   top: 0;
 }
 .profile-head h1 {
-  color: #333;
+  color: #2d699c;
   font-weight: 600;
   margin-bottom: 20px;
 }
 .profile-head h6 {
-  color: #0062cc;
+  color: #337ab7;
 }
 .profile-edit-btn {
   border: none;

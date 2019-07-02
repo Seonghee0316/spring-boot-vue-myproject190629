@@ -7,6 +7,6 @@ spring:
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
-            ddl-auto: update
+            ddl-auto: create
 server:
-    port: 9000
+    port: 9001

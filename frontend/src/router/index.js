@@ -5,7 +5,7 @@ import Login from '@/components/offer/Login'
 import Join from '@/components/offer/Join'
 import Mypage from '@/components/offer/Mypage'
 import Admin from '@/components/supervise/Admin'
-
+import MypageEdit from '@/components/offer/MypageEdit'
 
 Vue.use(Router)
 
@@ -16,6 +16,7 @@ export default new Router({
     {path: '/login', name: 'login', component: Login},
     {path: '/join', name: 'join', component: Join},
     {path: '/mypage', name: 'mypage', component: Mypage},
-    {path: '/admin', name: 'admin', component: Admin}
+    {path: '/admin', name: 'admin', component: Admin},
+    {path: '/mypageEdit', name: 'mypage', component: MypageEdit}
   ]
 }) 

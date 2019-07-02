@@ -1,49 +1,76 @@
 <template>
   <div class="main">
     <section class="signup">
-      <img src="images/signup-bg.jpg" alt>
+      <img src="images/signup-bg.jpg" alt />
       <div class="container">
         <div class="signup-content">
-          <form method="POST" id="signup-form" class="signup-form">
+          <form id="signup-form" class="signup-form">
             <h2 class="form-title">company join</h2>
-            <div class="form-group">
-              <input type="text" class="form-input" name="name" id="name" placeholder="회사명">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="email" class="form-input" name="email" id="email" placeholder="기업 ID" />
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" name="name" id="name" placeholder="기업명" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input
+                  type="text"
+                  class="form-input"
+                  name="password"
+                  id="password"
+                  placeholder="비밀번호"
+                />
+                <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+              </div>
+              <div class="form-group col-md-6">
+                <input
+                  type="password"
+                  class="form-input"
+                  name="re_password"
+                  id="re_password"
+                  placeholder="비밀번호 확인"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" name="name" id="name" placeholder="산업/직군" />
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" name="name" id="name" placeholder="대표명" />
+              </div>
             </div>
 
-            <div class="form-group">
-              <input type="email" class="form-input" name="email" id="email" placeholder="아이디">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" name="name" id="name" placeholder="담당자명" />
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" name="name" id="name" placeholder="담당자연락처" />
+              </div>
             </div>
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-input"
-                name="password"
-                id="password"
-                placeholder="비밀번호"
-              >
-              <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" name="name" id="name" placeholder="회사 홈페이지" />
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" name="name" id="name" placeholder="회사 주소" />
+              </div>
             </div>
-            <div class="form-group">
-              <input
-                type="password"
-                class="form-input"
-                name="re_password"
-                id="re_password"
-                placeholder="비밀번호 확인"
-              >
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-input" name="name" id="name" placeholder="담당자명">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-input" name="name" id="name" placeholder="담당자연락처">
-            </div>
-            <div class="form-group">
-              <!-- <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-              <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>-->
-            </div>
-            <div class="form-group">
-              <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up">
+
+            <div class="form-row">
+              <div class="form-group">
+                <!-- <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>-->
+              </div>
+              <div class="form-group col-md-12">
+                <!-- <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" /> -->
+                <button @click="join" name="submit" id="submit" class="form-submit">Sign up</button>
+              </div>
             </div>
           </form>
           <p class="loginhere">
@@ -57,7 +84,15 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  methods: {
+    join() {
+      alert('가입되셨습니다!');
+      this.$router.push('/login');
+    }
+  }  
+};
 </script>
 
 <style scoped>
@@ -234,12 +269,16 @@ body {
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
-  padding: 50px 85px;
+  padding: 40px 0px;
+}
+
+.signup-content .form-title {
+  font-size: 32px;
 }
 
 .form-group {
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .form-input {
@@ -331,7 +370,8 @@ body {
   background-image: -ms-linear-gradient(to left, #74ebd5, #9face6);
   background-image: -o-linear-gradient(to left, #74ebd5, #9face6);
   background-image: -webkit-linear-gradient(to left, #74ebd5, #9face6);
-  background-image: linear-gradient(to left, #1171c3, #337ab7ad);
+  /* background-image: linear-gradient(to left, #1171c3, #337ab7ad); */
+  background-image: linear-gradient(#337ab7);
 }
 
 input[type="checkbox"]:not(old) {
