@@ -8,21 +8,15 @@
             <h2 class="form-title">company join</h2>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <input type="email" class="form-input" name="email" id="email" placeholder="기업 ID" />
+                <input type="email" class="form-input" v-model="offerId" placeholder="기업 ID" />
               </div>
               <div class="form-group col-md-6">
-                <input type="text" class="form-input" name="name" id="name" placeholder="기업명" />
+                <input type="text" class="form-input" v-model="offerName" placeholder="기업명" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <input
-                  type="text"
-                  class="form-input"
-                  name="password"
-                  id="password"
-                  placeholder="비밀번호"
-                />
+                <input type="password" class="form-input" placeholder="비밀번호" />
                 <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
               </div>
               <div class="form-group col-md-6">
@@ -31,34 +25,35 @@
                   class="form-input"
                   name="re_password"
                   id="re_password"
+                  v-model="offerPassword"
                   placeholder="비밀번호 확인"
                 />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <input type="text" class="form-input" name="name" id="name" placeholder="산업/직군" />
+                <input type="text" class="form-input" v-model="offerIndustry" placeholder="산업/직군" />
               </div>
               <div class="form-group col-md-6">
-                <input type="text" class="form-input" name="name" id="name" placeholder="대표명" />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" class="form-input" name="name" id="name" placeholder="담당자명" />
-              </div>
-              <div class="form-group col-md-6">
-                <input type="text" class="form-input" name="name" id="name" placeholder="담당자연락처" />
+                <input type="text" class="form-input" v-model="offerCeoName" placeholder="대표명" />
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <input type="text" class="form-input" name="name" id="name" placeholder="회사 홈페이지" />
+                <input type="text" class="form-input" v-model="offerPmName" placeholder="담당자명" />
               </div>
               <div class="form-group col-md-6">
-                <input type="text" class="form-input" name="name" id="name" placeholder="회사 주소" />
+                <input type="text" class="form-input" v-model="offerPmPhone" placeholder="담당자연락처" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" v-model="offerHomepage" placeholder="회사 홈페이지" />
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-input" v-model="offerAddress" placeholder="회사 주소" />
               </div>
             </div>
 
@@ -86,12 +81,53 @@
 <script>
 import axios from "axios";
 export default {
+  data() {
+    return {
+      context: "http://localhost:9001/offers",
+      offerId: "",
+      offerPassword: "",
+      offerName: "",
+      offerCeoName: "",
+      offerIndustry: "",
+      offerPmName: "",
+      offerPmPhone: "",
+      offerHomepage: "",
+      offerAddress: ""
+    };
+  },
+
   methods: {
     join() {
-      alert('가입되셨습니다!');
-      this.$router.push('/login');
+      alert(`${this.offerId}님 가입을 축하드립니다! `);
+      let data = {
+        offerId: this.offerId,
+        offerPassword: this.offerPassword,
+        offerName: this.offerName,
+        offerCeoName: this.offerCeoName,
+        offerIndustry: this.offerIndustry,
+        offerPmName: this.offerPmName,
+        offerPmPhone: this.offerPmPhone,
+        offerHomepage: this.offerHomepage,
+        offerAddress: this.offerAddress
+      };
+
+      let headers = {
+        "Content-Type": "application/json",
+        'Authorization': "JWT fefege.."
+      };
+      axios
+        .post(`${this.context}`, JSON.stringify(data), { headers: headers })
+        .then(res => {
+          // alert(`SUCCESS2 : ${res.data}`)
+        })
+        .catch(e => {
+          alert('ERROR')
+          this.$router.link(-1);
+        })
+
+      this.$router.push("/login");
     }
-  }  
+  }
 };
 </script>
 

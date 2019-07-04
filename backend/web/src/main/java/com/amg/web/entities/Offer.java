@@ -25,12 +25,12 @@ import lombok.ToString;
  @Getter
  @Setter
  @ToString
- @Table(name = "offers")
+ @Table(name = "job_offer")
 public class Offer implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long offerSeqNo;
+    private Long id;
 
     @Column(name="offer_id") private String offerId;
     @Column(name="offer_password") private String offerPassword;
@@ -45,7 +45,7 @@ public class Offer implements Serializable{
     @Override
     public String toString(){
 
-        return "Offer :[offerSeqNo:"+offerSeqNo+",offerId:" +offerId+
+        return "Offer :[id"+id+",offerId:" +offerId+
         ", offerPassword:"+offerPassword+", offerName:"+offerName+", offerCeoName:"+offerCeoName+
        ", offerIndustry:"+offerIndustry+", offerPmName:"+offerPmName+", offerPmPhone:"+offerPmPhone+
        ", offerHomepage:"+offerHomepage+", offerAddress"+offerAddress + "]";

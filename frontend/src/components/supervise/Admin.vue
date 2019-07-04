@@ -18,13 +18,15 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a href="#">대시보드</a></li>
+            <!-- <li><a href="#">대시보드</a></li>
         <li><a href="#">설정</a></li>
-        <li><a href="#">프로필</a></li> -->
-        <li><router-link to="/login">로그아웃</router-link></li>
+            <li><a href="#">프로필</a></li>-->
+            <li>
+              <router-link to="/login">로그아웃</router-link>
+            </li>
           </ul>
           <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="검색...">
+            <input type="text" class="form-control" placeholder="검색..." />
           </form>
         </div>
       </div>
@@ -66,50 +68,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>02-3533-1830</td>
-                  <td>fgeot@gmail.com</td>
-                  <td>fgeot@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>02-3533-1830</td>
-                  <td>gqeot@gmail.com</td>
-                  <td>gqeot@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>02-3533-1830</td>
-                  <td>eidpe@gmail.com</td>
-                  <td>eidpe@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>02-3533-1830</td>
-                  <td>qlpxie@gmail.com</td>
-                  <td>qlpxie@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>02-3533-1830</td>
-                  <td>cccse@gmail.com</td>
-                  <td>cccse@gmail.com</td>
+                <tr v-for="(item,index) in arr" v-bind:key="item.id">
+                  <td>{{index + 1}}</td>
+                  <td>{{item.offerId}}</td>
+                  <td>{{item.offerName}}</td>
+                  <td>{{item.offerPmName}}</td>
+                  <td>{{item.offerPmPhone}}</td>
+                  <td>{{item.offerHomepage}}</td>
+                  <td>{{item.offerAddress}}</td>
                 </tr>
               </tbody>
             </table>
@@ -142,7 +108,33 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      context: "http://localhost:9001/offers",
+      id: "",
+      offerId: "",
+      offerName: "",
+      offerPmName: "",
+      offerPmPhone: "",
+      offerHomepage: "",
+      offerAddress: "",
+      arr: []
+    };
+  },
+
+  created() {
+    axios
+      .get(`${this.context}/getOfferList`)
+      .then(res => {
+        this.arr = res.data;
+      })
+      .catch(e => {
+        alert("ERROR");
+      });
+  }
+};
 </script>
 
 <style scoped>
@@ -226,14 +218,13 @@ body {
   text-align: center;
 }
 
-.navbar-brand{
+.navbar-brand {
   color: white;
   font-weight: bold;
 }
 
-.navbar-inverse .navbar-nav>li>a {
-  color:white;
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
   font-weight: bold;
 }
-
 </style>

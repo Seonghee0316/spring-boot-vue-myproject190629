@@ -17,6 +17,6 @@ export default new Router({
     {path: '/join', name: 'join', component: Join},
     {path: '/mypage', name: 'mypage', component: Mypage},
     {path: '/admin', name: 'admin', component: Admin},
-    {path: '/mypageEdit', name: 'mypage', component: MypageEdit}
+    {path: '/mypageEdit', name: 'mypageEdit', component: MypageEdit}
   ]
 }) 

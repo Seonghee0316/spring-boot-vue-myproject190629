@@ -5,7 +5,7 @@
       <div class="sidebar-header">
         <h3>
           <a href="#">
-            <span>유성희</span> 님
+            <span>{{offerName}}</span> 님
           </a>
         </h3>
       </div>
@@ -46,11 +46,14 @@
             </div>
             <div class="col-md-10">
               <div class="profile-head">
+
                 <h1>
-                  <input type="text" value="(주) 카카오" />
+                  <input type="hidden" name="offerName" v-model="offerName" />
+                  <label>{{offerName}}</label>
                 </h1>
                 <h4>
-                  <input type="text" value="포털 및 기타 인터넷 정보매개 서비스업" />
+                  <input type="hidden" v-model="offerIndustry" />
+                  <label>{{offerIndustry}}</label>
                 </h4>
               </div>
             </div>
@@ -72,14 +75,13 @@
                     <div class="col-lg-9">
                       <input
                         type="hidden"
-                        value="KAKAO"
                         class="col-form-label form-control-label mypage-value"
+                        v-model="offerId"
                       />
                       <label
                         type="text"
-                        value="KAKAO"
                         class="col-form-label form-control-label mypage-value"
-                      >KAKAO</label>
+                      >{{offerId}}</label>
                     </div>
                   </div>
 
@@ -87,9 +89,9 @@
                     <label class="col-lg-3 col-form-label form-control-label">비밀번호</label>
                     <div class="col-lg-9">
                       <input
-                        type="text"
-                        value="****"
+                        type="password"
                         class="col-form-label form-control-label mypage-value"
+                        v-model="offerPassword"
                       />
                     </div>
                   </div>
@@ -99,7 +101,7 @@
                     <div class="col-lg-9">
                       <input
                         type="text"
-                        value="여민수/조수용"
+                        v-model="offerCeoName"
                         class="col-form-label form-control-label mypage-value"
                       />
                     </div>
@@ -110,7 +112,7 @@
                     <div class="col-lg-9">
                       <input
                         type="text"
-                        value="이신혜"
+                        v-model="offerPmName"
                         class="col-form-label form-control-label mypage-value"
                       />
                     </div>
@@ -120,7 +122,7 @@
                     <div class="col-lg-9">
                       <input
                         type="text"
-                        value="여민수/조수용"
+                        v-model="offerPmPhone"
                         class="col-form-label form-control-label mypage-value"
                       />
                     </div>
@@ -130,7 +132,7 @@
                     <div class="col-lg-9">
                       <input
                         type="text"
-                        value="경기 성남시 분당구 삼평동 681번지 에이치스퀘어 N동"
+                        v-model="offerAddress"
                         class="col-form-label form-control-label mypage-value"
                       />
                     </div>
@@ -140,16 +142,15 @@
                     <div class="col-lg-9">
                       <input
                         type="text"
-                        value="https://www.kakaocorp.com/"
+                        v-model="offerHomepage"
                         class="col-form-label form-control-label mypage-value"
                       />
                     </div>
                   </div>
                 </form>
                 <div class="mypage-view-btn">
-                  <router-link to="/mypage">
-                    <button type="button" class="btn">수정</button>
-                  </router-link>
+                  <button type="button" class="btn" @click="MypageEdit">수정</button>
+
                   <router-link to="/mypage">
                     <button type="button" class="btn">취소</button>
                   </router-link>
@@ -170,7 +171,79 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import { store } from "../../store";
+export default {
+  data() {
+    return {
+      context: "http://localhost:9001/offers",
+      offerId: store.state.offerId,
+      offerPassword: "",
+      offerName: "",
+      offerIndustry: "",
+      offerCeoName: "",
+      offerPmName: "",
+      offerPmPhone: "",
+      offerHomepage: "",
+      offerAddress: ""
+    };
+  },
+
+  created() {
+    axios
+      .get(`${this.context}/getOfferInfo/${this.offerId}`)
+      .then(res => {
+        (this.offerName = res.data.offerName),
+          (this.offerIndustry = res.data.offerIndustry),
+          (this.offerId = res.data.offerId),
+          (this.offerCeoName = res.data.offerCeoName),
+          (this.offerPmName = res.data.offerPmName),
+          (this.offerPmPhone = res.data.offerPmPhone),
+          (this.offerAddress = res.data.offerAddress),
+          (this.offerHomepage = res.data.offerHomepage);
+        // alert(`offerName : ${res.data.offerName}`);
+      })
+      .catch(e => {
+        alert("mypage - error");
+      });
+  },
+
+  methods: {
+    MypageEdit() {
+      let data = {
+        offerId: this.offerId,
+        offerPassword: this.offerPassword,
+        offerName: this.offerName,
+        offerCeoName: this.offerCeoName,
+        offerIndustry: this.offerIndustry,
+        offerPmName: this.offerPmName,
+        offerPmPhone: this.offerPmPhone,
+        offerHomepage: this.offerHomepage,
+        offerAddress: this.offerAddress
+      };
+
+      let headers = {
+        "Content-Type": "application/json",
+        Authorization: "JWT fefege.."
+      };
+
+      if (this.offerPassword) {
+        axios
+          .put(`${this.context}/${this.offerId}`, JSON.stringify(data), { headers: headers })
+          .then(
+            // alert('수정됨!')
+          )
+          .catch(e=>{
+            alert('수정실패!')
+            this.$router.link(-1);
+          });
+        this.$router.push("/mypage");
+      } else {
+        alert("비밀번호를 입력해주세요!");
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>

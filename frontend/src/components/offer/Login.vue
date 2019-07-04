@@ -2,30 +2,35 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100 p-t-50 p-b-90">
-        <form class="login100-form validate-form flex-sb flex-w">
+        <form class="login100-form validate-form flex-sb flex-w" @submit.prevent="login">
           <span class="login100-form-title p-b-51">Company Login</span>
 
           <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
-            <input class="input100" type="text" name="username" placeholder="Username">
+            <input class="input100" type="text" v-model="offerId" placeholder="offerId" />
             <span class="focus-input100"></span>
           </div>
 
           <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
-            <input class="input100" type="password" name="pass" placeholder="Password">
+            <input
+              class="input100"
+              type="password"
+              v-model="offerPassword"
+              placeholder="offerPassword"
+            />
             <span class="focus-input100"></span>
           </div>
 
           <div class="flex-sb-m w-full p-t-10 p-b-10">
             <div class="contact100-form-checkbox">
-              <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+              <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" />
               <!-- <label class="label-checkbox100" for="ckb1">
 								Remember me
               </label>-->
             </div>
 
             <div class="p-t-6 p-b-">
-              <router-link to="/join" class="txt1">회원가입 | </router-link>
-              <router-link to="/mypage" class="txt1">마이페이지 | </router-link>
+              <router-link to="/join" class="txt1">회원가입 |</router-link>
+              <router-link to="/mypage" class="txt1">마이페이지 |</router-link>
               <router-link to="/admin" class="txt1">관리자페이지</router-link>
             </div>
           </div>
@@ -40,8 +45,57 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import {store} from '../../store';
+export default {
+  data() {
+    return {
+      context: "http://localhost:9001/offers",
+      offerId: "",
+      offerPassword: "",
+      offerName: "",
+      offerCeoName: "",
+      offerIndustry: "",
+      offerPmName: "",
+      offerPmPhone: "",
+      offerHomepage: "",
+      offerAddress: ""
+    };
+  },
+  methods: {
+    login() {
+      let data = {
+        offerId: this.offerId,
+        offerPassword: this.offerPassword
+      };
 
+      let headers = {
+        "Content-Type": "application/json",
+        Authorization: "JWT fefege.."
+      };
+
+      axios
+        .post(`${this.context}/login`, JSON.stringify(data), {
+          headers: headers
+        })
+        .then(res => {
+          if (res.data.result == 'Success') {
+            store.state.offerId = this.offerId
+            if(this.offerId == 'admin') {
+              this.$router.push({path:'/admin'});
+            }else {
+              this.$router.push({path:'/mypage'});
+            }
+          } else {
+            alert('아이디 혹은 비밀번호가 다릅니다.')
+          }
+        })
+        .catch(e => {
+          alert("ERROR");
+        });
+    }
+  }
+};
 </script>
 
 <style scoped>

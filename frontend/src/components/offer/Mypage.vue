@@ -5,7 +5,7 @@
       <div class="sidebar-header">
         <h3>
           <a href="#">
-            <span>유성희</span> 님
+            <span>{{offerName}}</span> 님
           </a>
         </h3>
       </div>
@@ -139,13 +139,13 @@
           </div>
           <div class="col-md-10">
             <div class="profile-head">
-              <h1>(주) 카카오</h1>
+              <h1>{{offerName}}</h1>
               <!-- <h6>Web Developer and Designer</h6> -->
               <!-- <p class="proile-rating">
               RANKINGS :
               <span>8/10</span>
               </p>-->
-              <h4>포털 및 기타 인터넷 정보매개 서비스업</h4>
+              <h4>{{offerIndustry}}</h4>
             </div>
           </div>
         </div>
@@ -192,14 +192,14 @@
                   <label class="col-lg-3 col-form-label form-control-label">기업 ID</label>
                   <div class="col-lg-9">
                     <!-- <input class="form-control" type="text" value="janeuser"> -->
-                    <label class="col-form-label form-control-label mypage-value">KAKAO</label>
+                    <label class="col-form-label form-control-label mypage-value">{{offerId}}</label>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">대표자</label>
                   <div class="col-lg-9">
                     <!-- <input class="form-control" type="text" value="janeuser"> -->
-                    <label class="col-form-label form-control-label mypage-value">여민수/조수용</label>
+                    <label class="col-form-label form-control-label mypage-value">{{offerCeoName}}</label>
                   </div>
                 </div>
 
@@ -207,34 +207,32 @@
                   <label class="col-lg-3 col-form-label form-control-label">담당자 명</label>
                   <div class="col-lg-9">
                     <!-- <input class="form-control" type="url" value> -->
-                    <label class="col-form-label form-control-label mypage-value">이신혜</label>
+                    <label class="col-form-label form-control-label mypage-value">{{offerPmName}}</label>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">담당자 연락처</label>
                   <div class="col-lg-9">
                     <!-- <input class="form-control" type="text" value placeholder="Street"> -->
-                    <label class="col-form-label form-control-label mypage-value">02 3653 1293</label>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="col-lg-3 col-form-label form-control-label">회사 주소</label>
-                  <div class="col-lg-9">
-                    <!-- <input class="form-control" type="email" value="email@gmail.com"> -->
-                    <label
-                      class="col-form-label form-control-label mypage-value"
-                    >경기 성남시 분당구 삼평동 681번지 에이치스퀘어 N동</label>
+                    <label class="col-form-label form-control-label mypage-value">{{offerPmPhone}}</label>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">회사 홈페이지</label>
                   <div class="col-lg-9">
                     <!-- <input class="form-control" type="email" value="email@gmail.com"> -->
-                    <label
-                      class="col-form-label form-control-label mypage-value"
-                    >https://www.kakaocorp.com/</label>
+                    <!-- <label class="col-form-label form-control-label mypage-value">{{offerHomepage}}</label> -->
+                    <label class="col-form-label form-control-label mypage-value">{{offerHomepage}}</label>
                   </div>
                 </div>
+                <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">회사 주소</label>
+                  <div class="col-lg-9">
+                    <!-- <input class="form-control" type="email" value="email@gmail.com"> -->
+                    <label class="col-form-label form-control-label mypage-value">{{offerAddress}}</label>
+                  </div>
+                </div>
+
                 <!-- <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label">Password</label>
               <div class="col-lg-9">
@@ -257,14 +255,12 @@
               </form>
               <div class="mypage-view-btn">
                 <router-link to="/mypageEdit">
-                <button type="button" class="btn">수정</button>
+                  <button type="button" class="btn">수정</button>
                 </router-link>
                 <router-link to="/login">
                   <button type="button" class="btn">로그아웃</button>
                 </router-link>
-                <router-link to="/login">
-                  <button type="button" class="btn">탈퇴</button>
-                </router-link>
+                <button type="button" class="btn" @click="leave_account">탈퇴</button>
               </div>
             </form>
           </form>
@@ -275,7 +271,62 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import {store} from '../../store';
+export default {
+  data() {
+    return {
+      context: "http://localhost:9001/offers",
+      offerId:  store.state.offerId,
+      offerName: "",
+      offerIndustry: "",
+      offerCeoName: "",
+      offerPmName: "",
+      offerPmPhone: "",
+      offerHomepage: "",
+      offerAddress: ""
+
+      
+    };
+  },
+  created() {
+    // alert('마이페이지 들어옴');
+    // 데이터를 갖고 와야함. dto를 들고와서 각각 값을 박으면 됨.
+    // this.offerName = res.data.offerName
+
+    // alert(this.offerId)
+    axios
+      .get(`${this.context}/getOfferInfo/${this.offerId}`)
+      .then(res => {
+        (this.offerName = res.data.offerName),
+          (this.offerIndustry = res.data.offerIndustry),
+          (this.offerId = res.data.offerId),
+          (this.offerCeoName = res.data.offerCeoName),
+          (this.offerPmName = res.data.offerPmName),
+          (this.offerPmPhone = res.data.offerPmPhone),
+          (this.offerAddress = res.data.offerAddress),
+          (this.offerHomepage = res.data.offerHomepage);
+        // alert(`offerName : ${res.data.offerName}`);
+      })
+      .catch(e => {
+        alert("mypage - error");
+      });
+  },
+
+  methods: {
+    leave_account() {
+      axios
+        .delete(`${this.context}/leave_acount/${this.offerId}`)
+        .then(res => {
+          alert("탈퇴되셨습니다.");
+        })
+        .catch(e => {
+          alert("탈퇴 - error");
+        });
+        this.$router.push("/login")
+    }
+  }
+};
 </script>
 
 <style scoped>

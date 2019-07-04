@@ -13,6 +13,6 @@ import lombok.Data;
  */
 @Data @Component @Lazy
 public class OfferDTO {
-    private String offer_seq_no, offer_id, offer_password, offer_name, offer_ceo_name, offer_industry,
-    offer_pm_name , offer_pm_phone, offer_homepage, offer_address;
+    private String id, offerId, offerPassword, offerName, offerCeoName, offerIndustry,
+    offerPmName , offerPmPhone, offerHomepage, offerAddress;
 }
