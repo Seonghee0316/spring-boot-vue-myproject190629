@@ -11,7 +11,6 @@
       </div>
 
       <ul class="list-unstyled components">
-        <!-- <p>Dummy Heading</p> -->
         <li class="active"></li>
         <li>
           <a href="#">공고</a>
@@ -154,12 +153,6 @@
                   <router-link to="/mypage">
                     <button type="button" class="btn">취소</button>
                   </router-link>
-                  <!-- <router-link to="/login">
-                    <button type="button" class="btn">로그아웃</button>
-                  </router-link>
-                  <router-link to="/login">
-                    <button type="button" class="btn">탈퇴</button>
-                  </router-link>-->
                 </div>
               </form>
             </form>
@@ -201,7 +194,6 @@ export default {
           (this.offerPmPhone = res.data.offerPmPhone),
           (this.offerAddress = res.data.offerAddress),
           (this.offerHomepage = res.data.offerHomepage);
-        // alert(`offerName : ${res.data.offerName}`);
       })
       .catch(e => {
         alert("mypage - error");
@@ -249,16 +241,12 @@ export default {
 <style scoped>
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 .wrapper {
-  /* font-family: "Poppins", sans-serif; */
-  /* background: #fafafa; */
   font-family: "Do Hyeon", sans-serif;
-  /* font-weight: 300px; */
 }
 
 p {
   font-family: "Poppins", sans-serif;
   font-size: 1.1em;
-  /* font-weight: 300; */
   line-height: 1.7em;
   color: #999;
 }
@@ -330,11 +318,6 @@ a:focus {
 }
 .sidebar-header h3 span {
   color: #2d699c;
-}
-
-#sidebar ul.components {
-  /* padding: 25px 0; */
-  /* border-bottom: 1px solid #47748b; */
 }
 
 #sidebar ul p {
@@ -447,9 +430,6 @@ a.article:hover {
   text-align: left;
 }
 
-.profile-img {
-  /* text-align: center; */
-}
 .profile-img img {
   width: 70%;
   height: 100%;
@@ -500,13 +480,11 @@ a.article:hover {
 .proile-rating span {
   color: #495057;
   font-size: 25px;
-  /* font-weight: 600; */
 }
 .profile-head .nav-tabs {
   margin-bottom: 5%;
 }
 .profile-head .nav-tabs .nav-link {
-  /* font-weight: 600; */
   border: none;
 }
 .profile-head .nav-tabs .nav-link.active {
@@ -520,29 +498,23 @@ a.article:hover {
 .profile-work p {
   font-size: 22px;
   color: #818182;
-  /* font-weight: 600; */
   margin-top: 10%;
 }
 .profile-work a {
   text-decoration: none;
   color: #495057;
-  /* font-weight: 600; */
   font-size: 16px;
 }
 .profile-work ul {
   list-style: none;
 }
-.profile-tab label {
-  /* font-weight: 600; */
-}
+
 .profile-tab p {
-  /* font-weight: 600; */
   color: #0062cc;
 }
 
 .mypage {
   padding: 50px;
-  /* text-align: center; */
   margin-right: auto;
   margin-left: auto;
 }

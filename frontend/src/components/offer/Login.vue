@@ -20,18 +20,15 @@
             <span class="focus-input100"></span>
           </div>
 
-          <div class="flex-sb-m w-full p-t-10 p-b-10">
+          <div class="flex-sb-m w-full">
             <div class="contact100-form-checkbox">
               <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" />
-              <!-- <label class="label-checkbox100" for="ckb1">
-								Remember me
-              </label>-->
             </div>
 
-            <div class="p-t-6 p-b-">
-              <router-link to="/join" class="txt1">회원가입 |</router-link>
-              <router-link to="/mypage" class="txt1">마이페이지 |</router-link>
-              <router-link to="/admin" class="txt1">관리자페이지</router-link>
+            <div class="p-t-6">
+              <router-link to="/join" class="txt1" id="join">회원가입</router-link>
+              <!-- <router-link to="/mypage" class="txt1">마이페이지 |</router-link>
+              <router-link to="/admin" class="txt1">관리자페이지</router-link> -->
             </div>
           </div>
 
@@ -46,7 +43,7 @@
 
 <script>
 import axios from "axios";
-import {store} from '../../store';
+import { store } from "../../store";
 export default {
   data() {
     return {
@@ -79,15 +76,15 @@ export default {
           headers: headers
         })
         .then(res => {
-          if (res.data.result == 'Success') {
-            store.state.offerId = this.offerId
-            if(this.offerId == 'admin') {
-              this.$router.push({path:'/admin'});
-            }else {
-              this.$router.push({path:'/mypage'});
+          if (res.data.result == "Success") {
+            store.state.offerId = this.offerId;
+            if (this.offerId == "admin") {
+              this.$router.push({ path: "/admin" });
+            } else {
+              this.$router.push({ path: "/mypage" });
             }
           } else {
-            alert('아이디 혹은 비밀번호가 다릅니다.')
+            alert("아이디 혹은 비밀번호가 다릅니다.");
           }
         })
         .catch(e => {
@@ -99,29 +96,10 @@ export default {
 </script>
 
 <style scoped>
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-/* @font-face {
-  font-family: Ubuntu-Regular;
-  src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
-}
-
-@font-face {
-  font-family: Ubuntu-Bold;
-  src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
-} */
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
-
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
-
-* {
   height: 100%;
   font-family: "Black Han Sans", sans-serif;
 }
@@ -173,6 +151,11 @@ li {
 }
 
 /*---------------------------------------------*/
+
+#join {
+  margin-right: 20px;
+}
+
 input {
   outline: none;
   border: none;

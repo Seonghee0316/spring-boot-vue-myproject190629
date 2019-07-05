@@ -58,12 +58,8 @@
             </div>
 
             <div class="form-row">
-              <div class="form-group">
-                <!-- <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>-->
-              </div>
+              <div class="form-group"></div>
               <div class="form-group col-md-12">
-                <!-- <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up" /> -->
                 <button @click="join" name="submit" id="submit" class="form-submit">Sign up</button>
               </div>
             </div>
@@ -113,7 +109,7 @@ export default {
 
       let headers = {
         "Content-Type": "application/json",
-        'Authorization': "JWT fefege.."
+        Authorization: "JWT fefege.."
       };
       axios
         .post(`${this.context}`, JSON.stringify(data), { headers: headers })
@@ -121,9 +117,9 @@ export default {
           // alert(`SUCCESS2 : ${res.data}`)
         })
         .catch(e => {
-          alert('ERROR')
+          alert("ERROR");
           this.$router.link(-1);
-        })
+        });
 
       this.$router.push("/login");
     }

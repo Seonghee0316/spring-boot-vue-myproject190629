@@ -18,9 +18,6 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <!-- <li><a href="#">대시보드</a></li>
-        <li><a href="#">설정</a></li>
-            <li><a href="#">프로필</a></li>-->
             <li>
               <router-link to="/login">로그아웃</router-link>
             </li>
@@ -34,24 +31,6 @@
 
     <div class="container-fluid">
       <div class="row">
-        <!-- <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">개요</a></li>
-        <li><a href="#">보고서</a></li>
-        <li><a href="#">분석결과</a></li>
-        <li><a href="#">내보내기</a></li>
-      </ul>
-      <ul class="nav nav-sidebar">
-        <li><a href="">네비게이션A1</a></li>
-        <li><a href="">네비게이션A2</a></li>
-        <li><a href="">네비게이션A3</a></li>
-      </ul>
-      <ul class="nav nav-sidebar">
-        <li><a href="">네비게이션B1</a></li>
-        <li><a href="">네비게이션B2</a></li>
-      </ul>
-        </div>-->
-        <!-- <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
         <div class="main">
           <h2 class="sub-header">기업 회원목록</h2>
           <div class="table-responsive">
@@ -157,39 +136,9 @@ body {
 .sidebar {
   display: none;
 }
-@media (min-width: 768px) {
-  /* .sidebar {
-    position: fixed;
-    top: 51px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #f5f5f5;
-    border-right: 1px solid #eee;
-  } */
-}
-/* .nav-sidebar {
-  margin-right: -21px;
-  margin-bottom: 20px;
-  margin-left: -20px;
-}
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px;
-}
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color: #428bca;
-} */
+
 .main {
   padding: 20px;
-  /* text-align: center; */
 }
 @media (min-width: 768px) {
   .main {
