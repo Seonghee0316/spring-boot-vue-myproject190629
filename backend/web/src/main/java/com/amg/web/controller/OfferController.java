@@ -48,10 +48,9 @@ public class OfferController {
         return new ModelMapper();
     }
 
+    //회원가입
     @PostMapping("")
     public HashMap<String, String> save(@RequestBody OfferDTO offer) {
-
-        System.out.println("회원가입 " + offer.toString());
         HashMap<String, String> map = new HashMap<>();
         Offer entity = new Offer();
         entity.setOfferId(offer.getOfferId());
@@ -63,28 +62,15 @@ public class OfferController {
         entity.setOfferPmPhone(offer.getOfferPmPhone());
         entity.setOfferHomepage(offer.getOfferHomepage());
         entity.setOfferAddress(offer.getOfferAddress());
-
-        System.out.println("엔티티로 바뀐 정보:" + entity.toString());
-        // Customer entity =
-        // // Customer entity = modelMapper.map(dto, Customer.class);
-        // System.out.println("엔ㅌ티로 바뀐 정보: " + entity.toString());
         repo.save(entity);
         map.put("result", "SUCCESS");
         return map;
     }
 
+    //로그인
     @PostMapping("/login")
     public HashMap<String, String> login (@RequestBody OfferDTO dto){
-        System.out.println("로그인 컨트롤러");
-        System.out.println("아이디"+dto.getOfferId());
-        System.out.println("비밀번호" + dto.getOfferPassword());
-        
-        // ISupplier fx = (()-> {
-        //     // Customer c = modelMapper.map(dto, Customer.class);
-        //          return repo.findByOfferIdAndOfferPassword(dto.getOfferId(), 
-        //          dto.getOfferPassword());
 
-        //  });
         Offer o = repo.findByOfferIdAndOfferPassword(dto.getOfferId(), dto.getOfferPassword());
             HashMap<String, String> map = new HashMap<>();
   
@@ -95,7 +81,6 @@ public class OfferController {
                 }
 
             } catch (NullPointerException e) {
-                //TODO: handle exception
                 map.put("result", "Fail");
                 System.out.println("로그인 실패");
             }
@@ -103,22 +88,21 @@ public class OfferController {
          return map;
     }
 
+    // 마이페이지
     @GetMapping("/getOfferInfo/{offerId}")
     public OfferDTO getMyInfo(@PathVariable String offerId) {
-        System.out.println("마이페이지" + offerId);
         OfferDTO o = modelMapper.map(repo.findByOfferId(offerId), OfferDTO.class);
-        // System.out.println("id"+o.getOfferId());
         return o;
     }
 
+    // 회원 탈퇴
     @DeleteMapping("/leave_acount/{offerId}")
     public void leave_acount(@PathVariable String offerId) {
-        System.out.println("leave_acount 들어옴");
-        System.out.println(offerId);
         Long id = repo.findByOfferId(offerId).getId();
         repo.deleteById(id);
     }
 
+    // 관리자 페이지
     @GetMapping("/getOfferList")
     public Iterable<OfferDTO> getOfferList(){
         Iterable<Offer> entities = repo.findAll();
@@ -127,10 +111,10 @@ public class OfferController {
             OfferDTO off = modelMapper.map(o, OfferDTO.class);
             list.add(off);
         }
-
         return list;
     }
     
+    //마이페이지 수정
     @PutMapping("/{offerId}")
     public HashMap<String,String> update(@PathVariable String offerId, @RequestBody OfferDTO offer) {
 

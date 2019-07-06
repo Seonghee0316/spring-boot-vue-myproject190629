@@ -114,7 +114,6 @@ export default {
       axios
         .post(`${this.context}`, JSON.stringify(data), { headers: headers })
         .then(res => {
-          // alert(`SUCCESS2 : ${res.data}`)
         })
         .catch(e => {
           alert("ERROR");

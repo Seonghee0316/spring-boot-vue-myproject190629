@@ -27,8 +27,6 @@
 
             <div class="p-t-6">
               <router-link to="/join" class="txt1" id="join">회원가입</router-link>
-              <!-- <router-link to="/mypage" class="txt1">마이페이지 |</router-link>
-              <router-link to="/admin" class="txt1">관리자페이지</router-link> -->
             </div>
           </div>
 

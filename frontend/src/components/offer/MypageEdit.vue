@@ -221,9 +221,9 @@ export default {
 
       if (this.offerPassword) {
         axios
-          .put(`${this.context}/${this.offerId}`, JSON.stringify(data), { headers: headers })
+          .put(`${this.context}/${this.offerId}`,
+           JSON.stringify(data), { headers: headers })
           .then(
-            // alert('수정됨!')
           )
           .catch(e=>{
             alert('수정실패!')

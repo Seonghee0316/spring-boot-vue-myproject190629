@@ -29,7 +29,7 @@
           <a href="#">자기PR</a>
         </li>
         <li>
-          <a href="#">Q&A</a>
+          <a href="#">F&Q</a>
         </li>
         <li>
           <a href="#">문의</a>
@@ -136,9 +136,7 @@ export default {
       offerPmName: "",
       offerPmPhone: "",
       offerHomepage: "",
-      offerAddress: ""
-
-      
+      offerAddress: ""   
     };
   },
   created() {
