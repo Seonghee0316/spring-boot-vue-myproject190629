@@ -8,12 +8,12 @@
 
 ### 개발 환경
 
-운영체제:   Windows
-개발도구:   Visual Studio Code
+- 운영체제:   Windows
+- 개발도구:   Visual Studio Code
 Web Front-End
-Vue.js (Axios)
-Bootstrap
-Web back-End
+- Vue.js (Axios)
+- Bootstrap
+- Web back-End
 Spring Boot (JPA, RESTful, H2)
 버전 관리: Github
 
