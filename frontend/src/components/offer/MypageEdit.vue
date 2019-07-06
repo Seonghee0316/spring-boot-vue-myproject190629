@@ -45,7 +45,6 @@
             </div>
             <div class="col-md-10">
               <div class="profile-head">
-
                 <h1>
                   <input type="hidden" name="offerName" v-model="offerName" />
                   <label>{{offerName}}</label>
@@ -186,14 +185,14 @@ export default {
     axios
       .get(`${this.context}/getOfferInfo/${this.offerId}`)
       .then(res => {
-        (this.offerName = res.data.offerName),
-          (this.offerIndustry = res.data.offerIndustry),
-          (this.offerId = res.data.offerId),
-          (this.offerCeoName = res.data.offerCeoName),
-          (this.offerPmName = res.data.offerPmName),
-          (this.offerPmPhone = res.data.offerPmPhone),
-          (this.offerAddress = res.data.offerAddress),
-          (this.offerHomepage = res.data.offerHomepage);
+        this.offerName = res.data.offerName;
+          this.offerIndustry = res.data.offerIndustry;
+          this.offerId = res.data.offerId;
+          this.offerCeoName = res.data.offerCeoName;
+          this.offerPmName = res.data.offerPmName;
+          this.offerPmPhone = res.data.offerPmPhone;
+          this.offerAddress = res.data.offerAddress;
+          this.offerHomepage = res.data.offerHomepage;
       })
       .catch(e => {
         alert("mypage - error");
@@ -221,15 +220,16 @@ export default {
 
       if (this.offerPassword) {
         axios
-          .put(`${this.context}/${this.offerId}`,
-           JSON.stringify(data), { headers: headers })
-          .then(
-          )
-          .catch(e=>{
-            alert('수정실패!')
+          .put(`${this.context}/${this.offerId}`, JSON.stringify(data), {
+            headers: headers
+          })
+          .then(res => {
+            this.$router.push("/mypage")
+          })
+          .catch(e => {
+            alert("수정실패!");
             this.$router.link(-1);
           });
-        this.$router.push("/mypage");
       } else {
         alert("비밀번호를 입력해주세요!");
       }

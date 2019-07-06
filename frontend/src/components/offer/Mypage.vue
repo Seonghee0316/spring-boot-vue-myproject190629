@@ -11,8 +11,7 @@
       </div>
 
       <ul class="list-unstyled components">
-        <li class="active">
-        </li>
+        <li class="active"></li>
         <li>
           <a href="#">공고</a>
         </li>
@@ -23,7 +22,6 @@
             aria-expanded="false"
             class="dropdown-toggle"
           >면접</a>
-
         </li>
         <li>
           <a href="#">자기PR</a>
@@ -35,7 +33,6 @@
           <a href="#">문의</a>
         </li>
       </ul>
-
     </nav>
 
     <!-- Page Content  -->
@@ -43,8 +40,7 @@
       <div class="container emp-profile">
         <div class="row">
           <div class="col-md-4">
-            <div class="profile-img">
-            </div>
+            <div class="profile-img"></div>
           </div>
           <div class="col-md-10">
             <div class="profile-head">
@@ -57,8 +53,7 @@
       <form class="container">
         <div class="col-md-12">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-            </li>
+            <li class="nav-item"></li>
           </ul>
         </div>
 
@@ -103,7 +98,6 @@
                     <label class="col-form-label form-control-label mypage-value">{{offerAddress}}</label>
                   </div>
                 </div>
-
               </form>
               <div class="mypage-view-btn">
                 <router-link to="/mypageEdit">
@@ -124,33 +118,33 @@
 
 <script>
 import axios from "axios";
-import {store} from '../../store';
+import { store } from "../../store";
 export default {
   data() {
     return {
       context: "http://localhost:9001/offers",
-      offerId:  store.state.offerId,
+      offerId: store.state.offerId,
       offerName: "",
       offerIndustry: "",
       offerCeoName: "",
       offerPmName: "",
       offerPmPhone: "",
       offerHomepage: "",
-      offerAddress: ""   
+      offerAddress: ""
     };
   },
   created() {
     axios
       .get(`${this.context}/getOfferInfo/${this.offerId}`)
       .then(res => {
-        (this.offerName = res.data.offerName),
-          (this.offerIndustry = res.data.offerIndustry),
-          (this.offerId = res.data.offerId),
-          (this.offerCeoName = res.data.offerCeoName),
-          (this.offerPmName = res.data.offerPmName),
-          (this.offerPmPhone = res.data.offerPmPhone),
-          (this.offerAddress = res.data.offerAddress),
-          (this.offerHomepage = res.data.offerHomepage);
+        this.offerName = res.data.offerName;
+        this.offerIndustry = res.data.offerIndustry;
+        this.offerId = res.data.offerId;
+        this.offerCeoName = res.data.offerCeoName;
+        this.offerPmName = res.data.offerPmName;
+        this.offerPmPhone = res.data.offerPmPhone;
+        this.offerAddress = res.data.offerAddress;
+        this.offerHomepage = res.data.offerHomepage;
       })
       .catch(e => {
         alert("mypage - error");
@@ -167,7 +161,7 @@ export default {
         .catch(e => {
           alert("탈퇴 - error");
         });
-        this.$router.push("/login")
+      this.$router.push("/login");
     }
   }
 };
