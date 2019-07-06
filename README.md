@@ -22,4 +22,4 @@
 - 관리자 페이지 (기업)
 
 ### 포트폴리오 ppt 링크
-https://docs.google.com/presentation/d/1HgQ_bQNg9U6IQUKDaGvoUKzSdU-D3mhah-rQ4KmA5kc/edit?usp=sharing
+| https://docs.google.com/presentation/d/1HgQ_bQNg9U6IQUKDaGvoUKzSdU-D3mhah-rQ4KmA5kc/edit?usp=sharing
