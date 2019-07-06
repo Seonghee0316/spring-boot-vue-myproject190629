@@ -10,12 +10,9 @@
 
 - 운영체제:   Windows
 - 개발도구:   Visual Studio Code
-- Web Front-End
-Vue.js (Axios)
-Bootstrap
-- Web back-End
-Spring Boot (JPA, RESTful, H2)
-버전 관리: Github
+- Web Front-End: Vue.js (Axios), Bootstrap
+- Web back-End: Spring Boot (JPA, RESTful, H2)
+- 버전 관리: Github
 
 ### 구현 기능
 
