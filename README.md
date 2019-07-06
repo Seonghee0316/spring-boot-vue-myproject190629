@@ -8,19 +8,17 @@
 
 ### 개발 환경
 
-- 운영체제:   Windows
-- 개발도구:   Visual Studio Code
-- Web Front-End: Vue.js (Axios), Bootstrap
-- Web back-End: Spring Boot (JPA, RESTful, H2)
-- 버전 관리: Github
+- **운영체제**:   Windows
+- **개발도구**:   Visual Studio Code
+- **Web Front-End**: Vue.js (Axios), Bootstrap
+- **Web back-End**: Spring Boot (JPA, RESTful, H2)
+- **버전 관리**: Github
 
 ### 구현 기능
 
 - 기업 회원가입
 - 기업 로그인
-- 기업 마이페이지
-- 기업 마이페이지 수정
-- 기업 유저 탈퇴
+- 기업 마이페이지, 수정, 탈퇴
 - 관리자 페이지 (기업)
 
 ### 포트폴리오 ppt 링크
