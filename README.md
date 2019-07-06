@@ -1,4 +1,4 @@
-# Spring boot + Vue.js 개인 프로젝트 유성희
+# Spring Boot + Vue.js 개인 프로젝트 유성희
 
 ### 프로젝트 주제
 #### 스트리밍 블라인드 채용 사이트 ####
